@@ -137,9 +137,6 @@
   <script>
     // Auto-detect browser language
     document.addEventListener('DOMContentLoaded', function() {
-      // Set current year for copyright
-      document.getElementById('current-year').textContent = new Date().getFullYear();
-      
       // Get browser language
       let userLang = navigator.language || navigator.userLanguage;
       userLang = userLang.toLowerCase().split('-')[0]; // Get base language code
