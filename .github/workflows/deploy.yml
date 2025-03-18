@@ -1,0 +1,52 @@
+name: Deploy WebMScore Converter
+
+on:
+  push:
+    branches:
+      - master # Only trigger deployment on master branch pushes
+    paths-ignore: # Changes to these files will not trigger deployment
+      - README.md
+      - LICENSE
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2 # First step, checkout code repository
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+          cache: 'npm'
+          
+      # If you have npm dependencies, uncomment these lines
+      # - name: Install dependencies
+      #   run: npm install
+      
+      # If you need a build step, uncomment this line
+      # - name: Build
+      #   run: npm run build
+        
+      - name: Deploy to server
+        uses: easingthemes/ssh-deploy@main
+        with:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          REMOTE_USER: ${{ secrets.SERVER_USER }}
+          REMOTE_HOST: ${{ secrets.SERVER_HOST }}
+          SOURCE: "./" # Source directory (current directory with all files)
+          TARGET: ${{ secrets.DEPLOY_PATH }} # Deployment target path on server
+          EXCLUDE: ".git, .github, node_modules"
+          
+      - name: Process config and restart nginx
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            # Replace environment variables in nginx.conf
+            cat ${{ secrets.DEPLOY_PATH }}/nginx.conf | sed "s|\${DEPLOY_PATH}|${{ secrets.DEPLOY_PATH }}|g" > ${{ secrets.DEPLOY_PATH }}/nginx.conf.processed
+            sudo ln -sf ${{ secrets.DEPLOY_PATH }}/nginx.conf.processed /etc/nginx/conf.d/webmscore.conf
+            sudo nginx -s reload
