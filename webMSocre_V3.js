@@ -55,7 +55,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       switch (outputFormat) {
         case 'mscz':
-          convertedData = await score.saveMSCZ();
+          convertedData = await score.saveMsc('mscz');
+          break;
+        case 'mscx':
+          convertedData = await score.saveMsc('mscx');
           break;
         case 'musicxml':
           convertedData = await score.saveXml();
