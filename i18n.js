@@ -4,6 +4,8 @@ const translations = {
     pageTitle: 'WebMScore Music Converter',
     uploadTitle: 'Upload Music File',
     uploadInstructions: 'Select a music file to convert (MusicXML, MSCZ, MSCX, etc.)',
+    dragDropText: 'Drag and drop your music file here',
+    browseFiles: 'Browse Files',
     convertTitle: 'Convert To',
     formatMscz: 'MuseScore Format (MSCZ)',
     formatMusicxml: 'MusicXML',
@@ -16,12 +18,15 @@ const translations = {
     formatPng: 'PNG',
     convertBtn: 'Convert',
     downloadBtn: 'Download Converted File',
-    previewTitle: 'Preview'
+    previewTitle: 'Preview',
+    tagline: 'Free online tool to convert between music score formats'
   },
   'es': {
     pageTitle: 'Convertidor de Música WebMScore',
     uploadTitle: 'Subir Archivo de Música',
     uploadInstructions: 'Seleccione un archivo de música para convertir (MusicXML, MSCZ, MSCX, etc.)',
+    dragDropText: 'Arrastre y suelte su archivo de música aquí',
+    browseFiles: 'Explorar Archivos',
     convertTitle: 'Convertir A',
     formatMscz: 'Formato MuseScore (MSCZ)',
     formatMusicxml: 'MusicXML',
@@ -34,12 +39,15 @@ const translations = {
     formatPng: 'PNG',
     convertBtn: 'Convertir',
     downloadBtn: 'Descargar Archivo Convertido',
-    previewTitle: 'Vista Previa'
+    previewTitle: 'Vista Previa',
+    tagline: 'Herramienta gratuita en línea para convertir entre formatos de partituras musicales'
   },
   'fr': {
     pageTitle: 'Convertisseur de Musique WebMScore',
     uploadTitle: 'Télécharger un Fichier de Musique',
     uploadInstructions: 'Sélectionnez un fichier de musique à convertir (MusicXML, MSCZ, MSCX, etc.)',
+    dragDropText: 'Glissez et déposez votre fichier de musique ici',
+    browseFiles: 'Parcourir les Fichiers',
     convertTitle: 'Convertir En',
     formatMscz: 'Format MuseScore (MSCZ)',
     formatMusicxml: 'MusicXML',
@@ -52,12 +60,15 @@ const translations = {
     formatPng: 'PNG',
     convertBtn: 'Convertir',
     downloadBtn: 'Télécharger le Fichier Converti',
-    previewTitle: 'Aperçu'
+    previewTitle: 'Aperçu',
+    tagline: 'Outil en ligne gratuit pour convertir entre les formats de partitions musicales'
   },
   'ja': {
     pageTitle: 'WebMScore 音楽コンバーター',
     uploadTitle: '音楽ファイルをアップロード',
     uploadInstructions: '変換する音楽ファイルを選択してください (MusicXML, MSCZ, MSCX, など)',
+    dragDropText: '音楽ファイルをここにドラッグ＆ドロップ',
+    browseFiles: 'ファイルを参照',
     convertTitle: '変換先',
     formatMscz: 'MuseScoreフォーマット (MSCZ)',
     formatMusicxml: 'MusicXML',
@@ -70,12 +81,15 @@ const translations = {
     formatPng: 'PNG',
     convertBtn: '変換',
     downloadBtn: '変換したファイルをダウンロード',
-    previewTitle: 'プレビュー'
+    previewTitle: 'プレビュー',
+    tagline: '楽譜フォーマット間の無料オンライン変換ツール'
   },
   'zh': {
     pageTitle: 'WebMScore 音乐转换工具',
     uploadTitle: '上传音乐文件',
     uploadInstructions: '选择要转换的音乐文件 (MusicXML, MSCZ, MSCX, 等)',
+    dragDropText: '将音乐文件拖放到此处',
+    browseFiles: '浏览文件',
     convertTitle: '转换为',
     formatMscz: 'MuseScore 格式 (MSCZ)',
     formatMusicxml: 'MusicXML',
@@ -88,12 +102,15 @@ const translations = {
     formatPng: 'PNG',
     convertBtn: '转换',
     downloadBtn: '下载转换后的文件',
-    previewTitle: '预览'
+    previewTitle: '预览',
+    tagline: '免费在线工具，用于转换不同的音乐乐谱格式'
   },
   'zh-tw': {
     pageTitle: 'WebMScore 音樂轉換工具',
     uploadTitle: '上傳音樂檔案',
     uploadInstructions: '選擇要轉換的音樂檔案 (MusicXML, MSCZ, MSCX, 等)',
+    dragDropText: '將音樂檔案拖放到此處',
+    browseFiles: '瀏覽檔案',
     convertTitle: '轉換為',
     formatMscz: 'MuseScore 格式 (MSCZ)',
     formatMusicxml: 'MusicXML',
@@ -106,7 +123,8 @@ const translations = {
     formatPng: 'PNG',
     convertBtn: '轉換',
     downloadBtn: '下載轉換後的檔案',
-    previewTitle: '預覽'
+    previewTitle: '預覽',
+    tagline: '免費線上工具，用於轉換不同的音樂樂譜格式'
   }
 };
 
@@ -138,12 +156,20 @@ function updateLanguage() {
   });
 }
 
+// Function to set language explicitly
+function setLanguage(lang) {
+  if (translations[lang]) {
+    const languageSelector = document.getElementById('languageSelector');
+    languageSelector.value = lang;
+    updateLanguage();
+  }
+}
+
 // Initialize language handling
 document.addEventListener('DOMContentLoaded', () => {
   const languageSelector = document.getElementById('languageSelector');
   
   // Set initial language (could be from browser preference or saved setting)
-  // This example just uses the selector's default value
   updateLanguage();
   
   // Update language when selector changes
