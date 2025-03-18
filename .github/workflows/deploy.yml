@@ -12,23 +12,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v2 # First step, checkout code repository
-      
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '16'
-          cache: 'npm'
-          
-      # If you have npm dependencies, uncomment these lines
-      # - name: Install dependencies
-      #   run: npm install
-      
-      # If you need a build step, uncomment this line
-      # - name: Build
-      #   run: npm run build
-        
+    steps:        
       - name: Deploy to server
         uses: easingthemes/ssh-deploy@main
         with:
