@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           convertedData = await score.saveMSCZ();
           break;
         case 'musicxml':
-          convertedData = await score.saveMusicXML();
+          convertedData = await score.saveXml();
           break;
         case 'pdf':
           convertedData = await score.savePdf();
@@ -69,28 +69,48 @@ document.addEventListener('DOMContentLoaded', async () => {
         case 'mp3':
           // Audio conversion can take longer, so update the progress
           updateProgress(65, `Converting to MP3 (this may take a while)...`);
+          await score.setSoundFont(new Uint8Array(
+            await (
+              await fetch('https://cdn.jsdelivr.net/gh/musescore/MuseScore@2.1/share/sound/FluidR3Mono_GM.sf3')
+            ).arrayBuffer()
+          ))
           convertedData = await score.saveAudio('mp3');
           break;
         case 'wav':
           updateProgress(65, `Converting to WAV (this may take a while)...`);
+          await score.setSoundFont(new Uint8Array(
+            await (
+              await fetch('https://cdn.jsdelivr.net/gh/musescore/MuseScore@2.1/share/sound/FluidR3Mono_GM.sf3')
+            ).arrayBuffer()
+          ))
           convertedData = await score.saveAudio('wav');
           break;
         case 'flac':
           updateProgress(65, `Converting to FLAC (this may take a while)...`);
+          await score.setSoundFont(new Uint8Array(
+            await (
+              await fetch('https://cdn.jsdelivr.net/gh/musescore/MuseScore@2.1/share/sound/FluidR3Mono_GM.sf3')
+            ).arrayBuffer()
+          ))
           convertedData = await score.saveAudio('flac');
           break;
         case 'ogg':
           updateProgress(65, `Converting to OGG (this may take a while)...`);
+          await score.setSoundFont(new Uint8Array(
+            await (
+              await fetch('https://cdn.jsdelivr.net/gh/musescore/MuseScore@2.1/share/sound/FluidR3Mono_GM.sf3')
+            ).arrayBuffer()
+          ))
           convertedData = await score.saveAudio('ogg');
           break;
         case 'png':
           // Get all PNG pages
           const metadata = await score.metadata();
           const pngDataArray = [];
-          
+
           for (let i = 0; i < metadata.pages; i++) {
-            updateProgress(60 + Math.floor((i / metadata.pages) * 25), 
-              `Generating PNG ${i+1}/${metadata.pages}...`);
+            updateProgress(60 + Math.floor((i / metadata.pages) * 25),
+              `Generating PNG ${i + 1}/${metadata.pages}...`);
             pngDataArray.push(await score.savePng(i));
           }
           convertedData = pngDataArray[0]; // Just use first page for download
