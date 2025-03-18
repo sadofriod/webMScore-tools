@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebMScore Converter Tool - Convert Music Files Online</title>
+  <meta name="description" content="Free online tool to convert music scores between formats including MusicXML, MSCZ, MIDI, MP3, PDF and more. Powered by WebMScore from LibreScore.">
+  <meta name="keywords" content="music score converter, musicxml converter, midi converter, mscz converter, music notation, sheet music, online converter, WebMScore, LibreScore">
+  <meta name="author" content="WebMScore Tool">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://yourwebsite.com/webmscore/" />
+  <script src="https://cdn.jsdelivr.net/npm/webmscore/webmscore.js"></script>
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- Open Graph / Social Media Meta Tags -->
+  <meta property="og:title" content="WebMScore Music Converter Tool">
+  <meta property="og:description" content="Convert music scores between different formats online for free.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://yourwebsite.com/webmscore/">
+  <meta property="og:image" content="https://yourwebsite.com/webmscore/images/converter-preview.jpg">
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S4EWCHMSEG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-S4EWCHMSEG');
+</script>
+<body>
+  <header>
+    <div class="language-selector">
+      <label for="languageSelector">Language:</label>
+      <select id="languageSelector">
+        <option value="en">English</option>
+        <option value="es">Español</option>
+        <option value="fr">Français</option>
+        <option value="ja">日本語</option>
+        <option value="zh">简体中文</option>
+        <option value="zh-tw">繁體中文</option>
+      </select>
+    </div>
+
+    <h1 data-i18n="pageTitle">WebMScore Music Converter</h1>
+    <p class="tagline">Free online tool to convert between music score formats</p>
+  </header>
+
+  <main class="container">
+    <div class="section">
+      <h2 data-i18n="uploadTitle">Upload Music File</h2>
+      <p data-i18n="uploadInstructions">Select a music file to convert (MusicXML, MSCZ,
+        MSCX, etc.)</p>
+      
+      <div id="uploadArea" class="upload-area">
+        <div class="upload-icon">📁</div>
+        <p data-i18n="dragDropText">Drag and drop your music file here</p>
+        <p>– or –</p>
+        <div class="file-input-wrapper">
+          <div class="browse-button" data-i18n="browseFiles">Browse Files</div>
+          <input type="file" id="musicFile"
+            accept=".mscz,.mscx,.musicxml,.xml,.mid,.midi,.kar,.md,.mgu,.sgu,.cap,.capx,.bww,.bmw,.gtp,.gp3,.gp4,.gp5,.gpx,.gp,.ptb,.mmp" />
+        </div>
+        <div id="fileName" class="file-name"></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 data-i18n="convertTitle">Convert To</h2>
+      <select id="outputFormat">
+        <option value="mscz" data-i18n-option="formatMscz">MuseScore Format (MSCZ)
+        </option>
+        <option value="musicxml" data-i18n-option="formatMusicxml">MusicXML</option>
+        <option value="pdf" data-i18n-option="formatPdf">PDF</option>
+        <option value="midi" data-i18n-option="formatMidi">MIDI</option>
+        <option value="mp3" data-i18n-option="formatMp3">MP3</option>
+        <option value="wav" data-i18n-option="formatWav">WAV</option>
+        <option value="flac" data-i18n-option="formatFlac">FLAC</option>
+        <option value="ogg" data-i18n-option="formatOgg">OGG</option>
+        <option value="png" data-i18n-option="formatPng">PNG</option>
+      </select>
+
+      <div>
+        <button id="convertBtn" data-i18n="convertBtn">Convert</button>
+        <button id="downloadBtn" data-i18n="downloadBtn">Download Converted
+          File</button>
+      </div>
+
+      <div class="progress" id="progressInfo"></div>
+      <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="attribution">
+    <div class="attribution-notice">
+      <strong>⚠️ Important Notice:</strong>
+      <p>
+        This tool is powered by <a href="https://github.com/LibreScore/webmscore" target="_blank" rel="noopener noreferrer" class="repo-link">WebMScore</a> 
+        from <strong>LibreScore</strong>. Visit the GitHub repository for more information.
+      </p>
+    </div>
+    <div class="footer-links">
+      <a href="https://github.com/sadofriod/webMScore-tools/issues" target="_blank" rel="noopener noreferrer">Report Issues</a>
+    </div>
+  </footer>
+
+  <!-- Schema.org structured data for rich results -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "WebMScore Music Converter Tool",
+    "description": "Free online tool to convert music scores between formats including MusicXML, MSCZ, MIDI, MP3, PDF and more.",
+    "url": "https://yourwebsite.com/webmscore/",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "featureList": [
+      "Convert MusicXML to MSCZ",
+      "Convert MSCZ to PDF",
+      "Convert music scores to audio formats",
+      "Preview music scores online"
+    ]
+  }
+  </script>
+
+  <script>
+    // Auto-detect browser language
+    document.addEventListener('DOMContentLoaded', function() {
+      // Set current year for copyright
+      document.getElementById('current-year').textContent = new Date().getFullYear();
+      
+      // Get browser language
+      let userLang = navigator.language || navigator.userLanguage;
+      userLang = userLang.toLowerCase().split('-')[0]; // Get base language code
+      
+      // Handle special case for traditional Chinese
+      if (navigator.language === 'zh-TW' || navigator.language === 'zh-HK') {
+        userLang = 'zh-tw';
+      }
+      
+      // Check if we support this language
+      const languageSelector = document.getElementById('languageSelector');
+      const supportedLanguages = Array.from(languageSelector.options).map(opt => opt.value);
+      
+      // Set the language if supported
+      if (supportedLanguages.includes(userLang)) {
+        languageSelector.value = userLang;
+        // Trigger language change if i18n.js is already loaded
+        if (typeof setLanguage === 'function') {
+          setLanguage(userLang);
+        }
+      }
+      
+      // Set up drag and drop functionality
+      const uploadArea = document.getElementById('uploadArea');
+      const musicFileInput = document.getElementById('musicFile');
+      const fileNameElement = document.getElementById('fileName');
+      
+      // Handle file selection display
+      musicFileInput.addEventListener('change', function(e) {
+        if (this.files && this.files.length > 0) {
+          fileNameElement.textContent = this.files[0].name;
+        }
+      });
+      
+      // Prevent default behavior for drag events
+      ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+        uploadArea.addEventListener(eventName, preventDefaults, false);
+        document.body.addEventListener(eventName, preventDefaults, false);
+      });
+      
+      // Highlight drop area when dragging over it
+      ['dragenter', 'dragover'].forEach(eventName => {
+        uploadArea.addEventListener(eventName, highlight, false);
+      });
+      
+      ['dragleave', 'drop'].forEach(eventName => {
+        uploadArea.addEventListener(eventName, unhighlight, false);
+      });
+      
+      // Handle dropped files
+      uploadArea.addEventListener('drop', handleDrop, false);
+      
+      function preventDefaults(e) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+      
+      function highlight() {
+        uploadArea.classList.add('dragover');
+      }
+      
+      function unhighlight() {
+        uploadArea.classList.remove('dragover');
+      }
+      
+      function handleDrop(e) {
+        const dt = e.dataTransfer;
+        const files = dt.files;
+        
+        if (files && files.length) {
+          musicFileInput.files = files;
+          fileNameElement.textContent = files[0].name;
+          
+          // Trigger change event for the file input
+          const event = new Event('change');
+          musicFileInput.dispatchEvent(event);
+        }
+      }
+    });
+  </script>
+
+  <script src="./i18n.js"></script>
+  <script src="./webMSocre.js"></script>
+</body>
+
+</html>
