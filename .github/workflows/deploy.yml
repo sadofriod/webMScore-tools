@@ -12,7 +12,10 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
 
-    steps:        
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        
       - name: Deploy to server
         uses: easingthemes/ssh-deploy@main
         with:
@@ -31,6 +34,6 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             # Replace environment variables in nginx.conf
-            cat ${{ secrets.DEPLOY_PATH }}/nginx.conf | sed "s|\${DEPLOY_PATH}|${{ secrets.DEPLOY_PATH }}|g" > ${{ secrets.DEPLOY_PATH }}/nginx.conf.processed
-            sudo ln -sf ${{ secrets.DEPLOY_PATH }}/nginx.conf.processed /etc/nginx/conf.d/webmscore.conf
+            cat ${{ secrets.DEPLOY_PATH }}/nginx.conf | sed "s|\${DEPLOY_PATH}|${{ secrets.DEPLOY_PATH }}|g" > ${{ secrets.DEPLOY_PATH }}/webmscore.conf
+            sudo ln -sf ${{ secrets.DEPLOY_PATH }}/webmscore.conf /etc/nginx/conf.d/webmscore.conf
             sudo nginx -s reload
