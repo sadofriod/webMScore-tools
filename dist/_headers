@@ -1,0 +1,11 @@
+/*
+  x-content-type-options: nosniff
+  x-frame-options: DENY
+  referrer-policy: same-origin
+  strict-transport-security: max-age=31536000; includeSubDomains
+  permissions-policy: geolocation=(), microphone=(), camera=()
+
+/*.js
+  cache-control: public, max-age=2592000
+/*.css
+  cache-control: public, max-age=2592000
