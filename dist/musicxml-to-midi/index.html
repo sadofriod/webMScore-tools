@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MusicXML to MIDI online — editable performance file</title>
+  <meta name="description" content="Convert MusicXML to MIDI in the browser. Notes, tempo and parts become a .mid file you can open in any DAW; layout and lyrics do not carry over.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://webmscore.ashesborn.cloud/musicxml-to-midi/">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header>
+    <a href="/">← WebMScore converter</a>
+    <h1>Convert MusicXML to MIDI</h1>
+  </header>
+  <main>
+    <section>
+      <h2>What this does</h2>
+      <p>MusicXML describes notation — notes, parts, articulations, layout. MIDI describes a performance — notes, velocity, tempo, channels. Converting one to the other gives you a file a DAW or sequencer can open and edit; the engraving does not come with it.</p>
+    </section>
+    <section>
+      <h2>How to convert</h2>
+      <ol>
+        <li>Choose a <code>.musicxml</code> or <code>.xml</code> file.</li>
+        <li>Set the output to MIDI (the default may not be MIDI, so select it manually).</li>
+        <li>Convert, then Download.</li>
+      </ol>
+    </section>
+    <section>
+      <h2>What you get</h2>
+      <p>Each part maps to a MIDI channel. Tempo changes written in the score are retained as tempo events. Lyrics, rehearsal marks, layout and other notation-only information are not carried over. Dynamics are approximated from score markings, not a real performance.</p>
+    </section>
+    <section>
+      <h2>FAQ</h2>
+      <h3>Does the MIDI keep tempo changes?</h3>
+      <p>Yes, tempo markings written in the score are exported as tempo events.</p>
+      <h3>Why are some articulations missing?</h3>
+      <p>MIDI has no concept of a staccato dot or a slur; only what the renderer can express as note timing or velocity survives.</p>
+      <h3>Can I open the result in a DAW?</h3>
+      <p>Yes — the file is a standard .mid and opens in Ableton, Logic, Reaper, MuseScore and most notation software.</p>
+    </section>
+    <p><a class="cta" href="/?to=midi">Open the converter with MIDI selected</a></p>
+    <nav aria-label="Other format converters">
+      <a href="/mscz-to-mp3/">Render a MuseScore MSCZ score to MP3 audio</a>
+      <a href="/midi-to-mp3/">Render a MIDI performance file to MP3 audio</a>
+    </nav>
+  </main>
+  <footer>Powered by <a href="https://github.com/LibreScore/webmscore" rel="noopener">WebMScore</a> (LibreScore)</footer>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "MusicXML to MIDI online — editable performance file",
+    "url": "https://webmscore.ashesborn.cloud/musicxml-to-midi/",
+    "applicationCategory": "MultimediaApplication",
+    "offers": { "@type": "Offer", "price": "0" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "Does the MIDI keep tempo changes?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, tempo markings written in the score are exported as tempo events." } },
+      { "@type": "Question", "name": "Why are some articulations missing?", "acceptedAnswer": { "@type": "Answer", "text": "MIDI has no concept of a staccato dot or a slur; only what the renderer can express as note timing or velocity survives." } },
+      { "@type": "Question", "name": "Can I open the result in a DAW?", "acceptedAnswer": { "@type": "Answer", "text": "Yes — the file is a standard .mid and opens in Ableton, Logic, Reaper, MuseScore and most notation software." } }
+    ]
+  }
+  </script>
+</body>
+</html>

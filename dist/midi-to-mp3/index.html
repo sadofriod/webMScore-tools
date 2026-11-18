@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MIDI to MP3 online — render a .mid file to audio</title>
+  <meta name="description" content="Turn a .mid or .midi file into MP3 in the browser. Rendering uses the General MIDI FluidR3 soundfont, so instruments sound like GM presets, not your own library.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://webmscore.ashesborn.cloud/midi-to-mp3/">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header>
+    <a href="/">← WebMScore converter</a>
+    <h1>Convert MIDI to MP3</h1>
+  </header>
+  <main>
+    <section>
+      <h2>What this does</h2>
+      <p>A MIDI file stores notes and instrument programs — no sound. Making an MP3 means rendering it through a sound bank. This converter renders with the General MIDI FluidR3 soundfont in your browser, which is why a piano track plays as a GM piano rather than your DAW's sampled piano.</p>
+    </section>
+    <section>
+      <h2>How to convert</h2>
+      <ol>
+        <li>Choose a <code>.mid</code>, <code>.midi</code> or <code>.kar</code> file.</li>
+        <li>Set the output to MP3.</li>
+        <li>Convert, then Download.</li>
+      </ol>
+    </section>
+    <section>
+      <h2>What you get</h2>
+      <p>All tracks are mixed into one stereo MP3. The sound is determined by General MIDI program numbers. If the original file depends on custom instruments, the result will sound different from what you hear in your DAW.</p>
+    </section>
+    <section>
+      <h2>FAQ</h2>
+      <h3>Why does it sound different from my DAW?</h3>
+      <p>The render uses the General MIDI FluidR3 soundfont. Any custom instrument in the original arrangement is replaced by the matching GM preset.</p>
+      <h3>Are all tracks mixed together?</h3>
+      <p>Yes — the output is one mixed audio file, not a stem export.</p>
+      <h3>Does it accept .kar files?</h3>
+      <p>Yes, .kar (MIDI karaoke) files are accepted; the lyrics are not rendered into the audio.</p>
+    </section>
+    <p><a class="cta" href="/?to=mp3">Open the converter with MP3 selected</a></p>
+    <nav aria-label="Other format converters">
+      <a href="/mscz-to-mp3/">Render a MuseScore MSCZ score to MP3 audio</a>
+      <a href="/musicxml-to-midi/">Convert MusicXML notation to an editable MIDI performance file</a>
+    </nav>
+  </main>
+  <footer>Powered by <a href="https://github.com/LibreScore/webmscore" rel="noopener">WebMScore</a> (LibreScore)</footer>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "MIDI to MP3 online — render a .mid file to audio",
+    "url": "https://webmscore.ashesborn.cloud/midi-to-mp3/",
+    "applicationCategory": "MultimediaApplication",
+    "offers": { "@type": "Offer", "price": "0" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "Why does it sound different from my DAW?", "acceptedAnswer": { "@type": "Answer", "text": "The render uses the General MIDI FluidR3 soundfont. Any custom instrument in the original arrangement is replaced by the matching GM preset." } },
+      { "@type": "Question", "name": "Are all tracks mixed together?", "acceptedAnswer": { "@type": "Answer", "text": "Yes — the output is one mixed audio file, not a stem export." } },
+      { "@type": "Question", "name": "Does it accept .kar files?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, .kar (MIDI karaoke) files are accepted; the lyrics are not rendered into the audio." } }
+    ]
+  }
+  </script>
+</body>
+</html>

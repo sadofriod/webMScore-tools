@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MSCZ to MP3 online — convert a MuseScore file to audio</title>
+  <meta name="description" content="Convert a MuseScore .mscz or .mscx file to MP3 in the browser. The score is rendered with the FluidR3 General MIDI soundfont; the file is not uploaded.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://webmscore.ashesborn.cloud/mscz-to-mp3/">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header>
+    <a href="/">← WebMScore converter</a>
+    <h1>Convert MSCZ to MP3 in the browser</h1>
+  </header>
+  <main>
+    <section>
+      <h2>What this does</h2>
+      <p>MSCZ is MuseScore's compressed score format — notation, layout and instrument data, with no audio in it. Converting it to MP3 means rendering the score through a soundfont so you get a playable file. This page opens the converter with MP3 already selected; the rendering happens in your browser and the score is never uploaded.</p>
+    </section>
+    <section>
+      <h2>How to convert</h2>
+      <ol>
+        <li>Choose your <code>.mscz</code> or <code>.mscx</code> file.</li>
+        <li>Output format is already set to MP3 — press Convert.</li>
+        <li>Download the rendered file when the progress bar finishes.</li>
+      </ol>
+    </section>
+    <section>
+      <h2>What you get</h2>
+      <p>MP3 is audio and has no layout or page breaks. The sound comes from <code>FluidR3Mono_GM.sf3</code> (General MIDI), so these are general GM sounds, not the sample library in your DAW. Tempo, dynamics and instruments are rendered as written in the score. Export PDF if you need the layout.</p>
+    </section>
+    <section>
+      <h2>FAQ</h2>
+      <h3>Does the MP3 keep the score's layout?</h3>
+      <p>No. MP3 is audio only — layout, page breaks and engraving are not part of the file. Export PDF if you need the printed score.</p>
+      <h3>Can I convert an .mscx file the same way?</h3>
+      <p>Yes. .mscx is the uncompressed MuseScore format; drop it in the same box and choose MP3.</p>
+      <h3>Is my file uploaded to a server?</h3>
+      <p>No. The conversion runs in your browser with WebMScore (WebAssembly); only the soundfont and the page assets are downloaded.</p>
+    </section>
+    <p><a class="cta" href="/?to=mp3">Open the converter with MP3 selected</a></p>
+    <nav aria-label="Other format converters">
+      <a href="/musicxml-to-midi/">Convert MusicXML notation to an editable MIDI performance file</a>
+      <a href="/midi-to-mp3/">Render a MIDI file to MP3 audio</a>
+    </nav>
+  </main>
+  <footer>Powered by <a href="https://github.com/LibreScore/webmscore" rel="noopener">WebMScore</a> (LibreScore)</footer>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "MSCZ to MP3 online — convert a MuseScore file to audio",
+    "url": "https://webmscore.ashesborn.cloud/mscz-to-mp3/",
+    "applicationCategory": "MultimediaApplication",
+    "offers": { "@type": "Offer", "price": "0" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "Does the MP3 keep the score's layout?", "acceptedAnswer": { "@type": "Answer", "text": "No. MP3 is audio only — layout, page breaks and engraving are not part of the file. Export PDF if you need the printed score." } },
+      { "@type": "Question", "name": "Can I convert an .mscx file the same way?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. .mscx is the uncompressed MuseScore format; drop it in the same box and choose MP3." } },
+      { "@type": "Question", "name": "Is my file uploaded to a server?", "acceptedAnswer": { "@type": "Answer", "text": "No. The conversion runs in your browser with WebMScore (WebAssembly); only the soundfont and the page assets are downloaded." } }
+    ]
+  }
+  </script>
+</body>
+</html>

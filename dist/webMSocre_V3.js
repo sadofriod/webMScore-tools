@@ -8,8 +8,15 @@ document.addEventListener('DOMContentLoaded', async () => {
   const convertBtn = document.getElementById('convertBtn');
   const downloadBtn = document.getElementById('downloadBtn');
   const fileInput = document.getElementById('musicFile');
+  const outputFormatSelect = document.getElementById('outputFormat');
   const progressInfo = document.getElementById('progressInfo');
   const progressBar = document.getElementById('progressBar');
+
+  const to = new URLSearchParams(location.search).get('to');
+  if (to && Array.from(outputFormatSelect.options).some(option => option.value === to)) {
+    outputFormatSelect.value = to;
+    outputFormatSelect.dispatchEvent(new Event('change'));
+  }
 
   // Function to update progress
   function updateProgress(percent, message = null) {
