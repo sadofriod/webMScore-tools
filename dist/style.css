@@ -261,8 +261,19 @@ h2 {
   padding-bottom: 1px;
 }
 .site-friends a:hover { border-bottom-color: #1b4a3c; }
+/* format landing pages nav + cta (light palette: #e2ded6 rules, #1b4a3c links) */
 .format-nav { margin: 2rem auto; max-width: 760px; padding: 0 1rem; }
-.format-nav h2 { font-size: 1.05rem; margin: 0 0 .6rem; opacity: .85; }
+.format-nav h2 { font-size: 1.05rem; margin: 0 0 .6rem; color: #666; letter-spacing: .06em; text-transform: uppercase; text-align: left; }
 .format-nav ul { list-style: none; padding: 0; margin: 0; display: grid; gap: .5rem; }
-.format-nav a { display: block; padding: .6rem .8rem; border: 1px solid rgba(255,255,255,.18); border-radius: 8px; text-decoration: none; }
-.format-nav a:hover { border-color: rgba(255,255,255,.45); }
+.format-nav a { display: block; padding: .65rem .85rem; border: 1px solid #e2ded6; border-radius: 8px; color: #1b4a3c; text-decoration: none; }
+.format-nav a:hover { border-color: #1b4a3c; background: #f7f5f1; }
+.cta { display: inline-block; background: #4CAF50; color: #fff; text-decoration: none; padding: 11px 18px; border-radius: 4px; font-weight: 600; margin: 18px 0 4px; }
+.cta:hover { background: #449d48; }
+main h2 { text-align: left; font-size: 1.25rem; margin: 28px 0 10px; }
+main h3 { text-align: left; font-size: 1.05rem; margin: 20px 0 6px; color: #1b4a3c; }
+main ol, main ul { line-height: 1.7; color: #444; text-align: left; }
+main p { line-height: 1.7; color: #444; text-align: left; }
+main nav { display: grid; gap: 6px; margin-top: 22px; font-size: 14px; }
+main nav a { color: #1b4a3c; }
+header a { color: #1b4a3c; font-size: 14px; text-decoration: none; }
+footer { margin-top: 30px; font-size: 13px; color: #777; text-align: center; }
