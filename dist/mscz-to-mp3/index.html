@@ -3,10 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MSCZ to MP3 online — convert a MuseScore file to audio</title>
-  <meta name="description" content="Convert a MuseScore .mscz or .mscx file to MP3 in the browser. The score is rendered with the FluidR3 General MIDI soundfont; the file is not uploaded.">
-  <meta name="robots" content="index, follow">
+  <title>MSCZ to MP3 — render a MuseScore score to audio</title>
+  <meta name="description" content="Render a MuseScore .mscz file to MP3 in the browser with the General MIDI soundfont. The score is never uploaded.">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
   <link rel="canonical" href="https://webmscore.ashesborn.cloud/mscz-to-mp3/">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-S4EWCHMSEG"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-S4EWCHMSEG');</script>
   <link rel="stylesheet" href="/style.css">
 </head>
 <body>
@@ -20,7 +22,11 @@
       <p>MSCZ is MuseScore's compressed score format — notation, layout and instrument data, with no audio in it. Converting it to MP3 means rendering the score through a soundfont so you get a playable file. This page opens the converter with MP3 already selected; the rendering happens in your browser and the score is never uploaded.</p>
     </section>
 
-    <p><a class="cta" href="/?to=mp3">Open the converter with the format selected</a></p>
+    <p><a class="cta" href="/?to=mp3" onclick="if(typeof gtag==='function')gtag('event','cta_click',{page:location.pathname,to:'mp3'})">Open the converter with the format selected</a></p>
+    <section>
+      <h2>How long does it take?</h2>
+      <p>A short piano score renders in under ten seconds; the 14 MB soundfont download dominates the first run and is cached afterwards.</p>
+    </section>
     <section>
       <h2>How to convert</h2>
       <ol>
@@ -41,11 +47,15 @@
       <p>Yes. .mscx is the uncompressed MuseScore format; drop it in the same box and choose MP3.</p>
       <h3>Is my file uploaded to a server?</h3>
       <p>No. The conversion runs in your browser with WebMScore (WebAssembly); only the soundfont and the page assets are downloaded.</p>
+      <h3>How long does it take?</h3>
+      <p>A short piano score renders in under ten seconds; the 14 MB soundfont download dominates the first run and is cached afterwards.</p>
     </section>
-    <p><a class="cta" href="/?to=mp3">Open the converter with MP3 selected</a></p>
+    <p><a class="cta" href="/?to=mp3" onclick="if(typeof gtag==='function')gtag('event','cta_click',{page:location.pathname,to:'mp3'})">Open the converter with MP3 selected</a></p>
     <nav aria-label="Other format converters">
-      <a href="/musicxml-to-midi/">Convert MusicXML notation to an editable MIDI performance file</a>
+      <a href="/mscz-to-pdf/">Convert a MuseScore score to PDF</a>
+      <a href="/midi-to-wav/">Convert MIDI to uncompressed WAV audio</a>
       <a href="/midi-to-mp3/">Render a MIDI file to MP3 audio</a>
+      <a href="/musicxml-to-midi/">Convert MusicXML notation to an editable MIDI performance file</a>
     </nav>
   </main>
   <footer>Powered by <a href="https://github.com/LibreScore/webmscore" rel="noopener">WebMScore</a> (LibreScore)</footer>
@@ -53,10 +63,12 @@
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "MSCZ to MP3 online — convert a MuseScore file to audio",
+    "name": "MSCZ to MP3 — render a MuseScore score to audio",
     "url": "https://webmscore.ashesborn.cloud/mscz-to-mp3/",
     "applicationCategory": "MultimediaApplication",
-    "offers": { "@type": "Offer", "price": "0" }
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "operatingSystem": "Any",
+    "browserRequirements": "Requires WebAssembly and cross-origin isolation"
   }
   </script>
   <script type="application/ld+json">
@@ -66,7 +78,8 @@
     "mainEntity": [
       { "@type": "Question", "name": "Does the MP3 keep the score's layout?", "acceptedAnswer": { "@type": "Answer", "text": "No. MP3 is audio only — layout, page breaks and engraving are not part of the file. Export PDF if you need the printed score." } },
       { "@type": "Question", "name": "Can I convert an .mscx file the same way?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. .mscx is the uncompressed MuseScore format; drop it in the same box and choose MP3." } },
-      { "@type": "Question", "name": "Is my file uploaded to a server?", "acceptedAnswer": { "@type": "Answer", "text": "No. The conversion runs in your browser with WebMScore (WebAssembly); only the soundfont and the page assets are downloaded." } }
+      { "@type": "Question", "name": "Is my file uploaded to a server?", "acceptedAnswer": { "@type": "Answer", "text": "No. The conversion runs in your browser with WebMScore (WebAssembly); only the soundfont and the page assets are downloaded." } },
+      { "@type": "Question", "name": "How long does it take?", "acceptedAnswer": { "@type": "Answer", "text": "A short piano score renders in under ten seconds; the 14 MB soundfont download dominates the first run and is cached afterwards." } }
     ]
   }
   </script>

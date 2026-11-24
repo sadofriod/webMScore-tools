@@ -277,3 +277,6 @@ main nav { display: grid; gap: 6px; margin-top: 22px; font-size: 14px; }
 main nav a { color: #1b4a3c; }
 header a { color: #1b4a3c; font-size: 14px; text-decoration: none; }
 footer { margin-top: 30px; font-size: 13px; color: #777; text-align: center; }
+.formats-hint { font-size: .85rem; opacity: .75; margin: .25rem 0 .75rem; }
+.intro { max-width: 760px; margin: 0 auto 1.5rem; padding: 0 1rem; opacity: .9; }
+.intro { max-width: 760px; margin: 0 auto 1.5rem; padding: 0 1rem; opacity: .9; }

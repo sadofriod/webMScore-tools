@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MIDI to Sheet Music — MIDI to notation, free</title>
+  <meta name="description" content="Turn a .mid file into music notation in the browser, then export PDF, PNG or MusicXML. MIDI stores no notation, so rhythms are quantised.">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+  <link rel="canonical" href="https://webmscore.ashesborn.cloud/midi-to-sheet-music/">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-S4EWCHMSEG"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-S4EWCHMSEG');</script>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header><a href="/">← WebMScore converter</a><h1>Convert MIDI to sheet music</h1></header>
+  <main>
+    <section><h2>What this does</h2><p>MIDI stores performance data — pitch, timing, velocity, instrument — and no notation at all. Importing it into a notation engine produces a score whose rhythms are quantised to note values: pitches and bar structure come out right, while triplets, ties and beaming usually need hand-correction. This page runs that import in your browser and exports the result as PDF, PNG or MusicXML.</p></section>
+    <p><a class="cta" href="/?to=pdf" onclick="if(typeof gtag==='function')gtag('event','cta_click',{page:location.pathname,to:'pdf'})">Open the converter with PDF selected</a></p>
+    <section><h2>How to convert</h2><ol><li>Choose a .mid, .midi or .kar file.</li><li>Pick PDF or PNG for a finished page, or MusicXML to keep editing.</li><li>Press Convert, then download.</li></ol></section>
+    <section><h2>What you get</h2><p>A score rendered from the performance: one staff per channel, a tempo taken from the file's tempo events, drums on a percussion staff. Lyrics are not part of a standard MIDI file, so they do not appear.</p></section>
+    <section><h2>Where the result needs work</h2><p>Human-played MIDI is not on the grid, so quantisation is a judgement call. Expect to fix tuplets, grace notes, overlapping voices and the beaming of fast passages in MuseScore, Dorico, Sibelius or Finale after importing the MusicXML export.</p></section>
+    <section><h2>Can I save the result as PDF?</h2><p>Yes — PDF is one of the outputs. It contains the full score as imported, paginated by the same engine that renders the on-screen pages.</p></section>
+    <section><h2>FAQ</h2>
+      <h3>Does a MIDI file contain sheet music?</h3><p>No. MIDI is note-event data: pitch, timing, velocity and an instrument program. Staves, rests, ties and beaming are generated when a notation program imports the file.</p>
+      <h3>Why do my rhythms look wrong?</h3><p>MIDI timing is performed timing. A human-played file gets quantised to the nearest note value, so tuplets and rubato are the first things to break.</p>
+      <h3>Can I keep editing the result?</h3><p>Yes. Choose MusicXML as the output and open it in MuseScore, Dorico, Sibelius or Finale.</p>
+      <h3>Are chords and lyrics imported?</h3><p>Chord symbols appear only if the file carries them as text events; lyrics are not part of a standard MIDI file.</p>
+    </section>
+    <nav aria-label="Other format converters"><a href="/midi-to-mp3/">Render a MIDI file to MP3 audio</a><a href="/midi-to-wav/">Convert MIDI to uncompressed WAV audio</a><a href="/mscz-to-pdf/">Export a MuseScore score as PDF</a><a href="/musicxml-to-midi/">Convert MusicXML notation to MIDI</a></nav>
+  </main>
+  <footer>Powered by <a href="https://github.com/LibreScore/webmscore" rel="noopener">WebMScore</a> (LibreScore)</footer>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"MIDI to Sheet Music — MIDI to notation, free","url":"https://webmscore.ashesborn.cloud/midi-to-sheet-music/","applicationCategory":"MultimediaApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"operatingSystem":"Any","browserRequirements":"Requires WebAssembly and cross-origin isolation"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does a MIDI file contain sheet music?","acceptedAnswer":{"@type":"Answer","text":"No. MIDI is note-event data: pitch, timing, velocity and an instrument program. Staves, rests, ties and beaming are generated when a notation program imports the file."}},{"@type":"Question","name":"Why do my rhythms look wrong?","acceptedAnswer":{"@type":"Answer","text":"MIDI timing is performed timing. A human-played file gets quantised to the nearest note value, so tuplets and rubato are the first things to break."}},{"@type":"Question","name":"Can I keep editing the result?","acceptedAnswer":{"@type":"Answer","text":"Yes. Choose MusicXML as the output and open it in MuseScore, Dorico, Sibelius or Finale."}},{"@type":"Question","name":"Are chords and lyrics imported?","acceptedAnswer":{"@type":"Answer","text":"Chord symbols appear only if the file carries them as text events; lyrics are not part of a standard MIDI file."}}]}</script>
+</body>
+</html>

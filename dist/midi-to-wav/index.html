@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MIDI to WAV Converter — free, no upload</title>
+  <meta name="description" content="Convert a .mid file to WAV in the browser: uncompressed PCM of the General MIDI render. The file is never uploaded.">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+  <link rel="canonical" href="https://webmscore.ashesborn.cloud/midi-to-wav/">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-S4EWCHMSEG"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-S4EWCHMSEG');</script>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header><a href="/">← WebMScore converter</a><h1>Convert MIDI to WAV</h1></header>
+  <main>
+    <section><h2>What this does</h2><p>A MIDI to WAV converter renders the notes through a soundfont and writes the result as uncompressed PCM. Unlike MP3, nothing is thrown away, so the WAV is exactly what the General MIDI render produced. Choose WAV when a downstream tool needs a clean audio file; choose MP3 when you need a small one.</p></section>
+    <p><a class="cta" href="/?to=wav" onclick="if(typeof gtag==='function')gtag('event','cta_click',{page:location.pathname,to:'wav'})">Open the converter with WAV selected</a></p>
+    <section><h2>How to convert</h2><ol><li>Choose a .mid, .midi or .kar file.</li><li>Set the output format to WAV.</li><li>Press Convert, then download the file when the progress bar finishes.</li></ol></section>
+    <section><h2>What you get</h2><p>One stereo WAV at the soundfont's sample rate, with all tracks mixed down. It is several times larger than the same render as MP3, because PCM stores every sample. Layout, lyrics and articulation marks are not part of an audio file — export PDF if you need the printed score.</p></section>
+    <section><h2>FAQ</h2>
+      <h3>Is WAV better than MP3 for MIDI?</h3><p>Only when you need an unprocessed file. Both come from the same soundfont, so the instruments sound identical; WAV keeps every sample, MP3 is smaller.</p>
+      <h3>Does WAV keep the score layout?</h3><p>No. Audio has no notation or pages. Export PDF for the printed score.</p>
+      <h3>Can I convert several files at once?</h3><p>No. The converter processes one file per run; converting a batch means repeating the steps.</p>
+    </section>
+    <nav aria-label="Other format converters"><a href="/midi-to-mp3/">Render a MIDI file to MP3 audio</a><a href="/midi-to-sheet-music/">Turn a MIDI performance into sheet music</a><a href="/mscz-to-pdf/">Export a MuseScore score as PDF</a><a href="/musicxml-to-midi/">Convert MusicXML notation to MIDI</a></nav>
+  </main>
+  <footer>Powered by <a href="https://github.com/LibreScore/webmscore" rel="noopener">WebMScore</a> (LibreScore)</footer>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"MIDI to WAV Converter — free, no upload","url":"https://webmscore.ashesborn.cloud/midi-to-wav/","applicationCategory":"MultimediaApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"operatingSystem":"Any","browserRequirements":"Requires WebAssembly and cross-origin isolation"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is WAV better than MP3 for MIDI?","acceptedAnswer":{"@type":"Answer","text":"Only when you need an unprocessed file. Both come from the same soundfont, so the instruments sound identical; WAV keeps every sample, MP3 is smaller."}},{"@type":"Question","name":"Does WAV keep the score layout?","acceptedAnswer":{"@type":"Answer","text":"No. Audio has no notation or pages. Export PDF for the printed score."}},{"@type":"Question","name":"Can I convert several files at once?","acceptedAnswer":{"@type":"Answer","text":"No. The converter processes one file per run; converting a batch means repeating the steps."}}]}</script>
+</body>
+</html>

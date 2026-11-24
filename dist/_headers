@@ -4,8 +4,15 @@
   referrer-policy: same-origin
   strict-transport-security: max-age=31536000; includeSubDomains
   permissions-policy: geolocation=(), microphone=(), camera=()
+  cross-origin-opener-policy: same-origin
+  cross-origin-embedder-policy: require-corp
 
 /*.js
   cache-control: public, max-age=2592000
 /*.css
   cache-control: public, max-age=2592000
+
+/llms.txt
+  content-type: text/plain; charset=utf-8
+/sitemap.xml
+  content-type: application/xml; charset=utf-8

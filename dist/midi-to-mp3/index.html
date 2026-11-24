@@ -3,10 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MIDI to MP3 online — render a .mid file to audio</title>
-  <meta name="description" content="Turn a .mid or .midi file into MP3 in the browser. Rendering uses the General MIDI FluidR3 soundfont, so instruments sound like GM presets, not your own library.">
-  <meta name="robots" content="index, follow">
+  <title>MIDI to MP3 Converter — free, in your browser</title>
+  <meta name="description" content="Turn a .mid or .midi file into MP3 in your browser. Rendered with the General MIDI FluidR3 soundfont; the file is never uploaded.">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
   <link rel="canonical" href="https://webmscore.ashesborn.cloud/midi-to-mp3/">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-S4EWCHMSEG"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-S4EWCHMSEG');</script>
   <link rel="stylesheet" href="/style.css">
 </head>
 <body>
@@ -17,10 +19,10 @@
   <main>
     <section>
       <h2>What this does</h2>
-      <p>A MIDI file stores notes and instrument programs — no sound. Making an MP3 means rendering it through a sound bank. This converter renders with the General MIDI FluidR3 soundfont in your browser, which is why a piano track plays as a GM piano rather than your DAW's sampled piano.</p>
+       <p>A MIDI to MP3 converter turns note data into audible audio: MIDI stores no sound, so the file has to be rendered through a soundfont, and this page does that render inside your browser with the General MIDI FluidR3 bank. This converter renders with the General MIDI FluidR3 soundfont in your browser, which is why a piano track plays as a GM piano rather than your DAW's sampled piano.</p>
     </section>
 
-    <p><a class="cta" href="/?to=mp3">Open the converter with the format selected</a></p>
+    <p><a class="cta" href="/?to=mp3" onclick="if(typeof gtag==='function')gtag('event','cta_click',{page:location.pathname,to:'mp3'})">Open the converter with the format selected</a></p>
     <section>
       <h2>How to convert</h2>
       <ol>
@@ -28,6 +30,14 @@
         <li>Set the output to MP3.</li>
         <li>Convert, then Download.</li>
       </ol>
+    </section>
+    <section>
+      <h2>How long does MIDI to MP3 take?</h2>
+      <p>About seven seconds for a short single-track file: most of that is the 14 MB soundfont download, which the browser caches for the next run. Long orchestral scores take proportionally longer to render.</p>
+    </section>
+    <section>
+      <h2>Is the MP3 lossless?</h2>
+      <p>No. MIDI carries notes and program numbers, not audio. The MP3 is a lossy render of General MIDI instruments, so any custom instrument the original arrangement used is replaced by its GM preset.</p>
     </section>
     <section>
       <h2>What you get</h2>
@@ -41,11 +51,17 @@
       <p>Yes — the output is one mixed audio file, not a stem export.</p>
       <h3>Does it accept .kar files?</h3>
       <p>Yes, .kar (MIDI karaoke) files are accepted; the lyrics are not rendered into the audio.</p>
+      <h3>How long does MIDI to MP3 take?</h3>
+      <p>About seven seconds for a short single-track file: most of that is the 14 MB soundfont download, which the browser caches for the next run. Long orchestral scores take proportionally longer to render.</p>
+      <h3>Is the MP3 lossless?</h3>
+      <p>No. MIDI carries notes and program numbers, not audio. The MP3 is a lossy render of General MIDI instruments, so any custom instrument the original arrangement used is replaced by its GM preset.</p>
     </section>
-    <p><a class="cta" href="/?to=mp3">Open the converter with MP3 selected</a></p>
+    <p><a class="cta" href="/?to=mp3" onclick="if(typeof gtag==='function')gtag('event','cta_click',{page:location.pathname,to:'mp3'})">Open the converter with MP3 selected</a></p>
     <nav aria-label="Other format converters">
+      <a href="/midi-to-wav/">Convert MIDI to uncompressed WAV audio</a>
+      <a href="/midi-to-sheet-music/">Turn a MIDI performance into sheet music</a>
+      <a href="/mscz-to-pdf/">Export a MuseScore score as PDF</a>
       <a href="/mscz-to-mp3/">Render a MuseScore MSCZ score to MP3 audio</a>
-      <a href="/musicxml-to-midi/">Convert MusicXML notation to an editable MIDI performance file</a>
     </nav>
   </main>
   <footer>Powered by <a href="https://github.com/LibreScore/webmscore" rel="noopener">WebMScore</a> (LibreScore)</footer>
@@ -53,10 +69,12 @@
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "MIDI to MP3 online — render a .mid file to audio",
+    "name": "MIDI to MP3 Converter — free, in your browser",
     "url": "https://webmscore.ashesborn.cloud/midi-to-mp3/",
     "applicationCategory": "MultimediaApplication",
-    "offers": { "@type": "Offer", "price": "0" }
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "operatingSystem": "Any",
+    "browserRequirements": "Requires WebAssembly and cross-origin isolation"
   }
   </script>
   <script type="application/ld+json">
@@ -66,7 +84,9 @@
     "mainEntity": [
       { "@type": "Question", "name": "Why does it sound different from my DAW?", "acceptedAnswer": { "@type": "Answer", "text": "The render uses the General MIDI FluidR3 soundfont. Any custom instrument in the original arrangement is replaced by the matching GM preset." } },
       { "@type": "Question", "name": "Are all tracks mixed together?", "acceptedAnswer": { "@type": "Answer", "text": "Yes — the output is one mixed audio file, not a stem export." } },
-      { "@type": "Question", "name": "Does it accept .kar files?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, .kar (MIDI karaoke) files are accepted; the lyrics are not rendered into the audio." } }
+      { "@type": "Question", "name": "Does it accept .kar files?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, .kar (MIDI karaoke) files are accepted; the lyrics are not rendered into the audio." } },
+      { "@type": "Question", "name": "How long does MIDI to MP3 take?", "acceptedAnswer": { "@type": "Answer", "text": "About seven seconds for a short single-track file: most of that is the 14 MB soundfont download, which the browser caches for the next run. Long orchestral scores take proportionally longer to render." } },
+      { "@type": "Question", "name": "Is the MP3 lossless?", "acceptedAnswer": { "@type": "Answer", "text": "No. MIDI carries notes and program numbers, not audio. The MP3 is a lossy render of General MIDI instruments, so any custom instrument the original arrangement used is replaced by its GM preset." } }
     ]
   }
   </script>

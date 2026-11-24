@@ -12,6 +12,19 @@ document.addEventListener('DOMContentLoaded', async () => {
   const progressInfo = document.getElementById('progressInfo');
   const progressBar = document.getElementById('progressBar');
 
+  const FORMAT_BY_EXT = {mscz:'mscz', mscx:'mscx', mxl:'mxl', musicxml:'musicxml', xml:'xml',
+    mid:'midi', midi:'midi', kar:'kar', gtp:'gtp', gp3:'gp3', gp4:'gp4', gp5:'gp5', gpx:'gpx', gp:'gp', ptb:'ptb'};
+
+  function readFormat(file) {
+    const extension = file.name.split('.').pop().toLowerCase();
+    const format = FORMAT_BY_EXT[extension];
+    if (!format) {
+      progressInfo.textContent = `Unsupported file type ".${extension}" — accepted: .mscz, .mscx, .musicxml, .xml, .mxl, .mid, .midi, .kar, .gp, .gp3–.gp5, .ptb`;
+      return null;
+    }
+    return format;
+  }
+
   const to = new URLSearchParams(location.search).get('to');
   if (to && Array.from(outputFormatSelect.options).some(option => option.value === to)) {
     outputFormatSelect.value = to;
@@ -44,10 +57,18 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const file = fileInput.files[0];
     const outputFormat = document.getElementById('outputFormat').value;
+    const in_fmt = readFormat(file);
+    if (!in_fmt) return;
+    const out_fmt = outputFormat;
+    const t0 = performance.now();
+    let stage = 'load';
+    const isAudio = ['mp3', 'wav', 'flac', 'ogg'].includes(outputFormat);
+    const timeout = (work, ms, msg) => Promise.race([work, new Promise((_,rej)=>setTimeout(()=>rej(new Error(msg)),ms))]);
 
     try {
       convertBtn.disabled = true;
       updateProgress(10, 'Loading file...');
+      if (typeof gtag === 'function') gtag('event','convert_start',{in_fmt, out_fmt, size_kb: Math.round(file.size/1024)});
 
       // Read the file
       const arrayBuffer = await file.arrayBuffer();
@@ -55,11 +76,13 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       // Create a score from the file
       updateProgress(30, 'Creating score from file...');
-      const score = await window.WebMscore.load('mscz', data);
+      const score = await timeout(window.WebMscore.load(in_fmt, data), 45000, 'Error: the score took longer than 45s to parse. Large or damaged files can do this.');
       updateProgress(50, 'File loaded successfully.');
 
       updateProgress(60, `Converting to ${outputFormat}...`);
 
+      stage = isAudio ? 'soundfont' : 'export';
+      const exportWork = (async () => {
       switch (outputFormat) {
         case 'mscz':
           convertedData = await score.saveMsc('mscz');
@@ -79,38 +102,42 @@ document.addEventListener('DOMContentLoaded', async () => {
         case 'mp3':
           // Audio conversion can take longer, so update the progress
           updateProgress(65, `Converting to MP3 (this may take a while)...`);
-          await score.setSoundFont(new Uint8Array(
-            await (
-              await fetch('https://cdn.jsdelivr.net/gh/musescore/MuseScore@2.1/share/sound/FluidR3Mono_GM.sf3')
-            ).arrayBuffer()
-          ))
+          {
+            const res = await fetch('https://cdn.jsdelivr.net/gh/musescore/MuseScore@2.1/share/sound/FluidR3Mono_GM.sf3');
+            if (!res.ok) throw new Error(`Error: could not download the soundfont (HTTP ${res.status})`);
+            await score.setSoundFont(new Uint8Array(await res.arrayBuffer()));
+          }
+          stage = 'export';
           convertedData = await score.saveAudio('mp3');
           break;
         case 'wav':
           updateProgress(65, `Converting to WAV (this may take a while)...`);
-          await score.setSoundFont(new Uint8Array(
-            await (
-              await fetch('https://cdn.jsdelivr.net/gh/musescore/MuseScore@2.1/share/sound/FluidR3Mono_GM.sf3')
-            ).arrayBuffer()
-          ))
+          {
+            const res = await fetch('https://cdn.jsdelivr.net/gh/musescore/MuseScore@2.1/share/sound/FluidR3Mono_GM.sf3');
+            if (!res.ok) throw new Error(`Error: could not download the soundfont (HTTP ${res.status})`);
+            await score.setSoundFont(new Uint8Array(await res.arrayBuffer()));
+          }
+          stage = 'export';
           convertedData = await score.saveAudio('wav');
           break;
         case 'flac':
           updateProgress(65, `Converting to FLAC (this may take a while)...`);
-          await score.setSoundFont(new Uint8Array(
-            await (
-              await fetch('https://cdn.jsdelivr.net/gh/musescore/MuseScore@2.1/share/sound/FluidR3Mono_GM.sf3')
-            ).arrayBuffer()
-          ))
+          {
+            const res = await fetch('https://cdn.jsdelivr.net/gh/musescore/MuseScore@2.1/share/sound/FluidR3Mono_GM.sf3');
+            if (!res.ok) throw new Error(`Error: could not download the soundfont (HTTP ${res.status})`);
+            await score.setSoundFont(new Uint8Array(await res.arrayBuffer()));
+          }
+          stage = 'export';
           convertedData = await score.saveAudio('flac');
           break;
         case 'ogg':
           updateProgress(65, `Converting to OGG (this may take a while)...`);
-          await score.setSoundFont(new Uint8Array(
-            await (
-              await fetch('https://cdn.jsdelivr.net/gh/musescore/MuseScore@2.1/share/sound/FluidR3Mono_GM.sf3')
-            ).arrayBuffer()
-          ))
+          {
+            const res = await fetch('https://cdn.jsdelivr.net/gh/musescore/MuseScore@2.1/share/sound/FluidR3Mono_GM.sf3');
+            if (!res.ok) throw new Error(`Error: could not download the soundfont (HTTP ${res.status})`);
+            await score.setSoundFont(new Uint8Array(await res.arrayBuffer()));
+          }
+          stage = 'export';
           convertedData = await score.saveAudio('ogg');
           break;
         case 'png':
@@ -136,6 +163,12 @@ document.addEventListener('DOMContentLoaded', async () => {
           }
           break;
       }
+      })();
+      if (isAudio) {
+        await timeout(exportWork, 120000, 'Error: audio rendering timed out.');
+      } else {
+        await exportWork;
+      }
 
       // Display preview for some formats
       if (outputFormat === 'pdf') {
@@ -144,14 +177,20 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       updateProgress(100, 'Conversion completed successfully!');
       downloadBtn.disabled = false;
+      const ms = Math.round(performance.now() - t0);
+      const out_bytes = convertedData.byteLength ?? convertedData.length;
+      if (typeof gtag === 'function') gtag('event','convert_success',{in_fmt, out_fmt, ms, out_bytes, out_kb: Math.round(out_bytes/1024)});
 
       // Clean up
       await score.destroy();
 
-    } catch (error) {
-      progressInfo.textContent = `Error: ${error.message}`;
-      console.error(error);
+    } catch (e) {
+      const ms = Math.round(performance.now() - t0);
+      progressInfo.textContent = 'Error: ' + e.message;
+      console.error(e);
+      downloadBtn.disabled = true;
       updateProgress(0);
+      if (typeof gtag === 'function') gtag('event','convert_error',{in_fmt, out_fmt, ms, stage, error_type: e.message.slice(0,60)});
     } finally {
       convertBtn.disabled = false;
     }

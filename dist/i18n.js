@@ -1,7 +1,7 @@
 // Define the translations for each language
 const translations = {
   'en': {
-    pageTitle: 'WebMScore Music Converter',
+    pageTitle: 'MIDI Converter — MIDI, MuseScore and MusicXML',
     uploadTitle: 'Upload Music File',
     uploadInstructions: 'Select a music file to convert (MusicXML, MSCZ, MSCX, etc.)',
     dragDropText: 'Drag and drop your music file here',
@@ -20,7 +20,7 @@ const translations = {
     convertBtn: 'Convert',
     downloadBtn: 'Download Converted File',
     previewTitle: 'Preview',
-    tagline: 'Free online tool to convert between music score formats'
+    tagline: 'Free in-browser converter — MIDI to MP3, WAV, PDF; MuseScore to PDF; MusicXML to MIDI'
   },
   'es': {
     pageTitle: 'Convertidor de Música WebMScore',

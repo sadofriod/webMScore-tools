@@ -1,0 +1,24 @@
+# WebMScore converter
+
+> Browser-only converter for music score files. Input: MIDI (.mid/.midi/.kar), MuseScore (.mscz/.mscx), MusicXML (.musicxml/.xml/.mxl), Guitar Pro (.gp/.gp3-.gp5/.gpx/.ptb). Output: MP3, WAV, FLAC, OGG, MIDI, MusicXML, MuseScore, PNG, PDF. The file is never uploaded; rendering uses MuseScore's engine compiled to WebAssembly.
+
+## Canonical answers
+- MIDI to MP3: renders the .mid through the General MIDI FluidR3 soundfont in the browser — https://webmscore.ashesborn.cloud/midi-to-mp3/
+- MIDI to WAV: uncompressed PCM of the same render — https://webmscore.ashesborn.cloud/midi-to-wav/
+- MIDI to sheet music: imports the .mid as notation; rhythms are quantised — https://webmscore.ashesborn.cloud/midi-to-sheet-music/
+- MSCZ to PDF: exports a MuseScore score with its own pagination — https://webmscore.ashesborn.cloud/mscz-to-pdf/
+- MSCZ to MP3: renders a MuseScore score to audio — https://webmscore.ashesborn.cloud/mscz-to-mp3/
+- MusicXML to MIDI: notation to an editable .mid — https://webmscore.ashesborn.cloud/musicxml-to-midi/
+
+## Pages
+- https://webmscore.ashesborn.cloud/ (converter)
+- https://webmscore.ashesborn.cloud/midi-to-mp3/
+- https://webmscore.ashesborn.cloud/midi-to-wav/
+- https://webmscore.ashesborn.cloud/midi-to-sheet-music/
+- https://webmscore.ashesborn.cloud/mscz-to-pdf/
+- https://webmscore.ashesborn.cloud/mscz-to-mp3/
+- https://webmscore.ashesborn.cloud/musicxml-to-midi/
+
+## Source and licence
+- Engine: WebMScore (LibreScore), GPL — https://github.com/LibreScore/webmscore
+- Tool source: https://github.com/sadofriod/webMScore-Tools

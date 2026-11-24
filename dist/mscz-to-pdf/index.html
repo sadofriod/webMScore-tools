@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MSCZ to PDF — MuseScore file to PDF, no upload</title>
+  <meta name="description" content="Open a MuseScore .mscz or .mscx file and export it as PDF in the browser. Layout, page breaks and engraving come from MuseScore itself.">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+  <link rel="canonical" href="https://webmscore.ashesborn.cloud/mscz-to-pdf/">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-S4EWCHMSEG"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-S4EWCHMSEG');</script>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header><a href="/">← WebMScore converter</a><h1>Convert MSCZ to PDF</h1></header>
+  <main>
+    <section><h2>What this does</h2><p>An .mscz file is a compressed MuseScore score: notation, layout and instrument data, with no PDF inside it. Converting it means running MuseScore's layout engine over the score, which is exactly what this page does — the same engine, compiled to WebAssembly, running in your browser. Page breaks and engraving therefore match what MuseScore shows for that file. The same steps convert a MuseScore file to PDF.</p></section>
+    <p><a class="cta" href="/?to=pdf" onclick="if(typeof gtag==='function')gtag('event','cta_click',{page:location.pathname,to:'pdf'})">Open the converter with PDF selected</a></p>
+    <section><h2>How to convert</h2><ol><li>Choose a .mscz or .mscx file.</li><li>Set the output format to PDF.</li><li>Press Convert, then download the PDF.</li></ol></section>
+    <section><h2>What you get</h2><p>One PDF containing the full score as opened: every page, in MuseScore's own pagination. Separate instrumental parts are not split out.</p></section>
+    <section><h2>FAQ</h2>
+      <h3>Does the PDF match MuseScore's own export?</h3><p>It comes from the same layout engine, so pagination and engraving match what MuseScore renders for that file.</p>
+      <h3>Can I export separate parts?</h3><p>No. The output is the full score as opened; export parts in MuseScore itself.</p>
+      <h3>What happens to a font that is not bundled?</h3><p>The browser build ships only its bundled fonts, so text in an unusual font falls back to a substitute glyph.</p>
+    </section>
+    <nav aria-label="Other format converters"><a href="/midi-to-mp3/">Render a MIDI file to MP3 audio</a><a href="/midi-to-wav/">Convert MIDI to uncompressed WAV audio</a><a href="/midi-to-sheet-music/">Turn a MIDI performance into sheet music</a><a href="/mscz-to-mp3/">Render a MuseScore score to MP3 audio</a></nav>
+  </main>
+  <footer>Powered by <a href="https://github.com/LibreScore/webmscore" rel="noopener">WebMScore</a> (LibreScore)</footer>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"MSCZ to PDF — MuseScore file to PDF, no upload","url":"https://webmscore.ashesborn.cloud/mscz-to-pdf/","applicationCategory":"MultimediaApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"operatingSystem":"Any","browserRequirements":"Requires WebAssembly and cross-origin isolation"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does the PDF match MuseScore's own export?","acceptedAnswer":{"@type":"Answer","text":"It comes from the same layout engine, so pagination and engraving match what MuseScore renders for that file."}},{"@type":"Question","name":"Can I export separate parts?","acceptedAnswer":{"@type":"Answer","text":"No. The output is the full score as opened; export parts in MuseScore itself."}},{"@type":"Question","name":"What happens to a font that is not bundled?","acceptedAnswer":{"@type":"Answer","text":"The browser build ships only its bundled fonts, so text in an unusual font falls back to a substitute glyph."}}]}</script>
+</body>
+</html>
