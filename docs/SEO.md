@@ -66,9 +66,22 @@ which the engine cannot read).
   both events fired. All 7 pages + `llms.txt` + `sitemap.xml` + `robots.txt` + IndexNow key return 200.
 - IndexNow submitted for all 7 URLs (HTTP 200).
 
+### GA4 configuration (2026-11-24, Admin API with the `mcp-ga4` service account)
+- Key event created: `properties/482448072/keyEvents/16407718907`, `eventName=convert_success`,
+  `countingMethod=ONCE_PER_EVENT`, `custom=true`.
+- Custom dimensions created (EVENT scope): `in_fmt` (`.../customDimensions/16408079580`),
+  `out_fmt` (`.../customDimensions/16407944800`), so the event parameters are reportable.
+- Note: the `mcp-ga4` MCP server is read-only and pinned to the blog property (489679026). For this
+  property use the same service account directly against the Data / Admin APIs
+  (`scripts` snippets in the session log; `analytics.readonly` for reports, `analytics.edit` for config).
+- Collection verified from the browser: `/g/collect` returns 204 with COEP enabled, `dataLayer` holds
+  `convert_start` / `convert_error` / `convert_success`. GA4 Realtime and the 2026-11-24 daily rollup were
+  still empty at 19:30 UTC — either pipeline lag or automation sessions being dropped; needs one human
+  visit to confirm ingestion.
+
 ### Still missing
-1. GA4: mark `convert_success` as a key event, and build a funnel `page_view → convert_start →
-   convert_success` (admin UI, no API key here).
+1. GA4 funnel visualisation (`page_view → convert_start → convert_success`) can only be saved in the
+   Explorations UI; the config above makes its dimensions available.
 2. `.md` twins per page + `llms-full.txt`, served `text/markdown` with `x-robots-tag: noindex`
    (GEO checklist item 7).
 3. Authority: zero referring domains. This, not on-page work, is the ranking ceiling. Next actions: a real
